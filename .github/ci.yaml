@@ -1,5 +1,7 @@
 name: ci-java-workflow
-on: [push]
+on:
+  push:
+    branches: develop
 jobs:
   check-application:
     runs-on: ubuntu-latest
