@@ -1,9 +1,7 @@
 package com.nogueira.catalog.admin.application;
 
-import com.nogueira.catalog.admin.domain.category.Category;
+public abstract class UseCase<IN, OUT> {
 
-public class UseCase {
-//    public Category execute() {
-//        return Category.newCategory();
-//    }
+    public abstract OUT execute(IN aIn);
+
 }
