@@ -1,29 +1,25 @@
 package com.nogueira.catalog.admin.application.category.retrieve.list;
 
-import com.nogueira.catalog.admin.application.UseCaseTest;
-import com.nogueira.catalog.admin.application.category.retrieve.get.DefaultGetCategoryByIdUseCase;
 import com.nogueira.catalog.admin.domain.category.Category;
 import com.nogueira.catalog.admin.domain.category.CategoryGateway;
-import com.nogueira.catalog.admin.domain.category.CategoryID;
-import com.nogueira.catalog.admin.domain.exceptions.NotFoundException;
+import com.nogueira.catalog.admin.domain.category.CategorySearchQuery;
 import com.nogueira.catalog.admin.domain.pagination.Pagination;
-import com.nogueira.catalog.admin.domain.pagination.SearchQuery;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.List;
-import java.util.Optional;
-
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.when;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
-public class ListCategoriesUseCaseTest extends UseCaseTest {
+@ExtendWith(MockitoExtension.class)
+public class ListCategoriesUseCaseTest {
 
     @InjectMocks
     private DefaultListCategoriesUseCase useCase;
@@ -31,9 +27,9 @@ public class ListCategoriesUseCaseTest extends UseCaseTest {
     @Mock
     private CategoryGateway categoryGateway;
 
-    @Override
-    protected List<Object> getMocks() {
-        return List.of(categoryGateway);
+    @BeforeEach
+    void cleanUp() {
+        Mockito.reset(categoryGateway);
     }
 
     @Test
@@ -50,7 +46,7 @@ public class ListCategoriesUseCaseTest extends UseCaseTest {
         final var expectedDirection = "asc";
 
         final var aQuery =
-                new SearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
+                new CategorySearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
 
         final var expectedPagination =
                 new Pagination<>(expectedPage, expectedPerPage, categories.size(), categories);
@@ -81,7 +77,7 @@ public class ListCategoriesUseCaseTest extends UseCaseTest {
         final var expectedDirection = "asc";
 
         final var aQuery =
-                new SearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
+                new CategorySearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
 
         final var expectedPagination =
                 new Pagination<>(expectedPage, expectedPerPage, categories.size(), categories);
@@ -111,7 +107,7 @@ public class ListCategoriesUseCaseTest extends UseCaseTest {
         final var expectedErrorMessage = "Gateway error";
 
         final var aQuery =
-                new SearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
+                new CategorySearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
 
         when(categoryGateway.findAll(eq(aQuery)))
                 .thenThrow(new IllegalStateException(expectedErrorMessage));
