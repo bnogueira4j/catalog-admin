@@ -1,8 +1,8 @@
 package com.nogueira.catalog.admin.application.category.retrieve.list;
 
 import com.nogueira.catalog.admin.domain.category.CategoryGateway;
+import com.nogueira.catalog.admin.domain.category.CategorySearchQuery;
 import com.nogueira.catalog.admin.domain.pagination.Pagination;
-import com.nogueira.catalog.admin.domain.pagination.SearchQuery;
 
 import java.util.Objects;
 
@@ -15,7 +15,7 @@ public class DefaultListCategoriesUseCase extends ListCategoriesUseCase {
     }
 
     @Override
-    public Pagination<CategoryListOutput> execute(final SearchQuery aQuery) {
+    public Pagination<CategoryListOutput> execute(final CategorySearchQuery aQuery) {
         return this.categoryGateway.findAll(aQuery)
                 .map(CategoryListOutput::from);
     }
