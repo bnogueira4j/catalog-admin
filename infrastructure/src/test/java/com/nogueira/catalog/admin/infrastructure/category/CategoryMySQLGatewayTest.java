@@ -3,7 +3,7 @@ package com.nogueira.catalog.admin.infrastructure.category;
 import com.nogueira.catalog.admin.domain.category.Category;
 import com.nogueira.catalog.admin.domain.category.CategoryID;
 import com.nogueira.catalog.admin.domain.category.CategorySearchQuery;
-import com.nogueira.catalog.admin.infrastructure.MySQLGatewayTest;
+import com.nogueira.catalog.admin.MySQLGatewayTest;
 import com.nogueira.catalog.admin.infrastructure.category.persistence.CategoryJpaEntity;
 import com.nogueira.catalog.admin.infrastructure.category.persistence.CategoryRepository;
 import org.junit.jupiter.api.Assertions;
