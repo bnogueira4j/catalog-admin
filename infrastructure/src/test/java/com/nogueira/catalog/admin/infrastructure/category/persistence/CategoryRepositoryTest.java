@@ -1,7 +1,7 @@
 package com.nogueira.catalog.admin.infrastructure.category.persistence;
 
 import com.nogueira.catalog.admin.domain.category.Category;
-import com.nogueira.catalog.admin.infrastructure.MySQLGatewayTest;
+import com.nogueira.catalog.admin.MySQLGatewayTest;
 import org.hibernate.PropertyValueException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
